@@ -1,4 +1,4 @@
-class People {
+export default class People {
   constructor(
     name,
     birthYear,
@@ -33,6 +33,7 @@ class People {
     this.starships = starships;
     this.url = url;
     this.vehicles = vehicles;
+    console.log('A new hero is born : ', this.name);
   }
 
   setName(name) {

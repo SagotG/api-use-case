@@ -1,17 +1,17 @@
 import React from 'react';
-import { Layout, Breadcrumb } from 'antd';
-
+import { Layout, Breadcrumb, Button } from 'antd';
+import { PeopleList } from '../index';
+import httpFactory from '../../services/httpFactory/httpFactory';
 const { Content } = Layout;
 
 const MainContainer = (props) => {
   return (
-    <Content style={{ padding: '0 50px' }}>
-      <Breadcrumb style={{ margin: '16px 0' }}>
-        <Breadcrumb.Item>Home</Breadcrumb.Item>
-        <Breadcrumb.Item>List</Breadcrumb.Item>
-        <Breadcrumb.Item>App</Breadcrumb.Item>
-      </Breadcrumb>
-      <div className='site-layout-content'>Content</div>
+    <Content style={{ padding: '0 50px', margin: '16px 0' }}>
+      <div className='site-layout-content'>
+        {/* <People name={'toto'} planets={'duranus'} /> */}
+        <Button onClick={() => httpFactory.getPeople()}>GET PEOPLE</Button>
+        <PeopleList {...props} />
+      </div>
     </Content>
   );
 };
