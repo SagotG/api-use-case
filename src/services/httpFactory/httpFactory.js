@@ -5,15 +5,6 @@ import PeopleManager from '../PeopleManager';
 const BASE_URL = 'https://swapi.dev/api';
 
 export default class httpFactory {
-  constructor() {}
-
-  checkStatus(status) {
-    if (status >= 200 || status <= 399) {
-      return true;
-    }
-    return false;
-  }
-
   static async getPeople() {
     return Axios.get(`${BASE_URL}/people`)
       .then((res) => {

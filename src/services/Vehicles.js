@@ -1,4 +1,4 @@
-class Vehicules {
+class Vehicles {
   constructor(
     cargoCapacity,
     consumables,
@@ -8,7 +8,7 @@ class Vehicules {
     edited,
     length,
     manufacturer,
-    maxAtmosphering_speed,
+    maxAtmospheringSpeed,
     model,
     name,
     passengers,
@@ -25,7 +25,7 @@ class Vehicules {
     this.edited = edited;
     this.length = length;
     this.manufacturer = manufacturer;
-    this.maxAtmosphering_speed = maxAtmosphering_speed;
+    this.maxAtmospheringSpeed = maxAtmospheringSpeed;
     this.model = model;
     this.name = name;
     this.passengers = passengers;

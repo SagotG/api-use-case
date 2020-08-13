@@ -14,7 +14,7 @@ const PeopleList = (props) => {
       console.log(JSON.stringify(result, null, 2));
       setData(result.listOfPeople);
     };
-    fetchData();
+    fetchData().finally(setLoading(false));
   }, []);
 
   const handleChange = (filters, sorter) => {
@@ -35,6 +35,10 @@ const PeopleList = (props) => {
     {
       title: 'Name',
       dataIndex: 'name',
+      key: 'name',
+      onFilter: (value, record) => record.name.indexOf(value) === 0,
+      sorter: (a, b) => a.name.length - b.name.length,
+      sortDirections: ['descend'],
     },
     { title: 'Birth Year', dataIndex: 'birthYear' },
     { title: 'Eye Color', dataIndex: 'eyeColor' },
@@ -60,6 +64,7 @@ const PeopleList = (props) => {
         <Button onClick={clearAll}>Clear filters and sorters</Button>
       </Space>
       <Table
+        rowKey={(record) => record.name}
         columns={columns}
         loading={loading}
         dataSource={data}

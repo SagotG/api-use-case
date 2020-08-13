@@ -20,7 +20,7 @@ export default class People {
     this.name = name;
     this.birthYear = birthYear;
     this.eyeColor = eyeColor;
-    this.films = films;
+    this.films = [...films];
     this.gender = gender;
     this.hairColor = hairColor;
     this.height = height;
@@ -29,10 +29,10 @@ export default class People {
     this.skinColor = skinColor;
     this.created = created;
     this.edited = edited;
-    this.species = species;
-    this.starships = starships;
+    this.species = [...species];
+    this.starships = [...starships];
     this.url = url;
-    this.vehicles = vehicles;
+    this.vehicles = [...vehicles];
     console.log('A new hero is born : ', this.name);
   }
 
