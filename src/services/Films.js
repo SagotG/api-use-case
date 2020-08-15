@@ -116,3 +116,5 @@ class Films {
     return this.vehicles;
   }
 }
+
+export default Films;

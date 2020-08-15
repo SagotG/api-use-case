@@ -1,21 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Card, Typography } from 'antd';
+import { Typography, Drawer } from 'antd';
 
 const { Title, Text } = Typography;
 
 const People = (props) => {
+  const [visible, setVisible] = useState(props.visible);
   return (
-    <div className='site-card-border-less-wrapper'>
-      <Card>
+    <>
+      <Drawer
+        title='Basic Drawer'
+        placement='right'
+        closable={false}
+        onClose={setVisible(false)}
+        visible={visible}>
         <Title>{props.name || 'Unknow'}</Title>
         <Text type='secondary'>{props.planets || 'Unknow'}</Text>
-      </Card>
-    </div>
+      </Drawer>
+    </>
   );
 };
 
 People.propTypes = {
+  visible: PropTypes.bool,
   name: PropTypes.string,
   planets: PropTypes.string,
 };

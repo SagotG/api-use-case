@@ -1,6 +1,6 @@
 import Species from './Species';
 
-export default class PlanetManager {
+export default class SpeciesManager {
   constructor() {
     this.listOfSpecies = [];
   }
@@ -25,6 +25,7 @@ export default class PlanetManager {
         elem.url
       );
       this.listOfSpecies.push(species);
+      return this.listOfSpecies;
     });
   }
 

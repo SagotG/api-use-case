@@ -7,7 +7,7 @@ export default class VehiclesManager {
 
   setVehiclesList(list) {
     list.map((elem, i) => {
-      let Vehicles = new Vehicles(
+      let vehicles = new Vehicles(
         elem.cargo_capacity,
         elem.consumables,
         elem.costIn_credits,
@@ -25,7 +25,8 @@ export default class VehiclesManager {
         elem.url,
         elem.vehicle_class
       );
-      this.listOfVehicles.push(Vehicles);
+      this.listOfVehicles.push(vehicles);
+      return this.listOfVehicles;
     });
   }
 

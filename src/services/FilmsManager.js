@@ -1,4 +1,4 @@
-import Planets from './Films';
+import Films from './Films';
 
 export default class FilmsManager {
   constructor() {
@@ -24,6 +24,7 @@ export default class FilmsManager {
         elem.vehicles
       );
       this.listOfFilms.push(films);
+      return this.listOfFilms;
     });
   }
 

@@ -1,4 +1,4 @@
-class Species {
+export default class Species {
   constructor(
     averageHeight,
     averageLifespan,

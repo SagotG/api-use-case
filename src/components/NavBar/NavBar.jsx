@@ -1,19 +1,36 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Layout, Menu } from 'antd';
 
 const { Header } = Layout;
 
 const NavBar = (props) => {
+  const itemMenu = () => {
+    const routes = props.routes;
+    return (
+      <Menu>
+        {routes.map((prop, key) => {
+          if (!prop.name) {
+            return null;
+          }
+
+          return (
+            <Menu.Item key={key}>
+              <Link to={prop.path}>{prop.name}</Link>
+            </Menu.Item>
+          );
+        })}
+      </Menu>
+    );
+  };
+
   return (
     <>
-      <Header className='header'>
-        <div className='logo' />
-        {/* <Menu theme='dark' mode='horizontal' defaultSelectedKeys={['2']}>
-          <Menu.Item key='1'>nav 1</Menu.Item>
-          <Menu.Item key='2'>nav 2</Menu.Item>
-          <Menu.Item key='3'>nav 3</Menu.Item>
-        </Menu> */}
+      <Header theme='light'>
+        <Menu theme='light' mode='horizontal'>
+          {itemMenu()}
+        </Menu>
       </Header>
     </>
   );

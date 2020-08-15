@@ -27,6 +27,7 @@ export default class PeopleManager {
         elem.vehicles
       );
       this.listOfPeople.push(people);
+      return this.listOfPeople;
     });
   }
 

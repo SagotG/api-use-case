@@ -1,4 +1,4 @@
-class Planets {
+export default class Planets {
   constructor(
     climate,
     created,

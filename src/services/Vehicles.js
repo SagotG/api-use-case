@@ -163,3 +163,5 @@ class Vehicles {
     return this.vehicleClass;
   }
 }
+
+export default Vehicles;

@@ -166,3 +166,5 @@ class Starships {
     return this.url;
   }
 }
+
+export default Starships;

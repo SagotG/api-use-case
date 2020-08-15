@@ -24,6 +24,7 @@ export default class PlanetsManager {
         elem.url
       );
       this.listOfPlanets.push(planets);
+      return this.listOfPlanets;
     });
   }
 
