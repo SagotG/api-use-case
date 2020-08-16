@@ -6,7 +6,7 @@ import dashRoutes from '../../routes/routes';
 const HomePage = () => {
   return (
     <>
-      <Typography.Title>Selet your category</Typography.Title>
+      <Typography.Title>Select your category</Typography.Title>
       <br />
       <Row gutter={[24, 16]}>
         {dashRoutes.map((item, key) => {
