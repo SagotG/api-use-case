@@ -1,12 +1,26 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import { Table, Space, Button, Drawer, Typography, Card, Row, Col } from 'antd';
+import {
+  Table,
+  Space,
+  Button,
+  Drawer,
+  Input,
+  Typography,
+  Card,
+  Row,
+  Col,
+  Tag,
+} from 'antd';
 import httpFactory from '../../services/httpFactory/httpFactory';
 import moment from 'moment';
+import { FilmsLink, ShipsLink, RacesLink } from '../index';
+
 const { Text } = Typography;
 
-const PeopleList = (props) => {
+const PeopleList = () => {
   const [data, setData] = useState(null);
+  const [search, setSearch] = useState(null);
   const [loading, setLoading] = useState(true);
   const [filteredInfo, setFilteredInfo] = useState(null);
   const [sortedInfo, setSortedInfo] = useState(null);
@@ -30,6 +44,12 @@ const PeopleList = (props) => {
   const setDrawer = (values) => {
     setVisible(!visible);
     setSelect(values);
+  };
+
+  const research = async (value) => {
+    setSearch(value);
+    const result = await httpFactory.getPeopleFromId(search);
+    setData(result.listOfPeople);
   };
 
   const columns = [
@@ -58,7 +78,13 @@ const PeopleList = (props) => {
 
   return (
     <>
-      <Space style={{ marginBottom: 16 }} />
+      <Space style={{ marginBottom: 16 }}>
+        <Input.Search
+          placeholder='search people'
+          enterButton
+          onChange={(e) => research(e.target.value)}
+        />
+      </Space>
       <Table
         size='small'
         rowKey={(record) => record.name}
@@ -101,6 +127,13 @@ const PeopleList = (props) => {
                       ? moment(select.edited).format('DD/MM/YYYY')
                       : '-'}
                   </p>
+                </Card>
+              </Col>
+              <Col className='gutter-row' span={12}>
+                <Card title='Extra information'>
+                  <FilmsLink {...select} />
+                  <ShipsLink {...select} />
+                  <RacesLink {...select} />
                 </Card>
               </Col>
               <Col className='gutter-row' span={12}>

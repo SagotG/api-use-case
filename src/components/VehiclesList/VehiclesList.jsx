@@ -5,6 +5,7 @@ import {
   Space,
   Button,
   Drawer,
+  Input,
   Typography,
   Card,
   Row,
@@ -17,6 +18,7 @@ const { Text } = Typography;
 
 const VehiclesList = () => {
   const [data, setData] = useState(null);
+  const [search, setSearch] = useState(null);
   const [loading, setLoading] = useState(true);
   const [filteredInfo, setFilteredInfo] = useState(null);
   const [sortedInfo, setSortedInfo] = useState(null);
@@ -41,6 +43,12 @@ const VehiclesList = () => {
   const setDrawer = (values) => {
     setVisible(!visible);
     setSelect(values);
+  };
+
+  const research = async (value) => {
+    setSearch(value);
+    const result = await httpFactory.getVehiclesFromId(search);
+    setData(result.listOfVehicles);
   };
 
   const columns = [
@@ -77,7 +85,14 @@ const VehiclesList = () => {
 
   return (
     <>
-      <Space style={{ marginBottom: 16 }} />
+      <Space style={{ marginBottom: 16 }}>
+        <Input.Search
+          placeholder='search starship'
+          enterButton
+          onChange={(e) => research(e.target.value)}
+        />
+      </Space>
+
       <Table
         size='small'
         rowKey={(record) => record.name}

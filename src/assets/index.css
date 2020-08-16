@@ -1,3 +1,8 @@
+p {
+  margin-top: 0;
+  margin-bottom: 0.2em;
+}
+
 .ant-layout-header {
   background-color: #fff;
 }
@@ -7,6 +12,7 @@
   min-height: calc(80vh + 5px);
   padding: 0px 50px;
   padding-top: 50px;
+  box-shadow: 0 16px 28px rgba(37, 38, 45, 0.12);
 }
 #components-layout-demo-top .logo {
   width: 120px;
@@ -38,4 +44,8 @@
 .ant-typography + h3.ant-typography,
 .ant-typography + h4.ant-typography {
   margin-top: 0.2em;
+}
+
+.ant-card {
+  box-shadow: 0 16px 28px rgba(37, 38, 45, 0.12);
 }

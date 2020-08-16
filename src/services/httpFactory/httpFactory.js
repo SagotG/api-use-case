@@ -20,8 +20,8 @@ export default class httpFactory {
       .catch((err) => err);
   }
 
-  static async getPeopleFromId(url) {
-    return Axios.get(url)
+  static async getPeopleFromId(val) {
+    return Axios.get(`${BASE_URL}/people/?search=${val}`)
       .then((res) => {
         let people = new PeopleManager();
         people.setPeopleList(res.data.results);
@@ -40,8 +40,8 @@ export default class httpFactory {
       .catch((err) => err);
   }
 
-  static async getStarshipsFromId(url) {
-    return Axios.get(url)
+  static async getStarshipsFromId(val) {
+    return Axios.get(`${BASE_URL}/starships/?search=${val}`)
       .then((res) => {
         let starships = new StarsphipsManager();
         starships.setStarsphipsList(res.data.results);
@@ -60,8 +60,8 @@ export default class httpFactory {
       .catch((err) => err);
   }
 
-  static async getFilmsFromId(url) {
-    return Axios.get(url)
+  static async getFilmsFromId(val) {
+    return Axios.get(`${BASE_URL}/films?search=${val}`)
       .then((res) => {
         let films = new FilmsManger();
         films.setFilmsList(res.data.results);
@@ -80,8 +80,8 @@ export default class httpFactory {
       .catch((err) => err);
   }
 
-  static async getVehiclesFromId(url) {
-    return Axios.get(url)
+  static async getVehiclesFromId(val) {
+    return Axios.get(`${BASE_URL}/vehicles/?search=${val}`)
       .then((res) => {
         let vehicles = new VehiclesManger();
         vehicles.setVehiclesList(res.data.results);
@@ -100,11 +100,11 @@ export default class httpFactory {
       .catch((err) => err);
   }
 
-  static async getSpeciesFromId(url) {
-    return Axios.get(url)
+  static async getSpeciesFromId(val) {
+    return Axios.get(`${BASE_URL}/species/?search=${val}`)
       .then((res) => {
         let species = new SpeciesManger();
-        species.setPeopleList(res.data.results);
+        species.setSpeciesList(res.data.results);
         return species;
       })
       .catch((err) => err);
@@ -120,8 +120,8 @@ export default class httpFactory {
       .catch((err) => err);
   }
 
-  static async getPlanetsFromId(url) {
-    return Axios.get(url)
+  static async getPlanetsFromId(val) {
+    return Axios.get(`${BASE_URL}/planets/?search=${val}`)
       .then((res) => {
         let planets = new PlanetsManger();
         planets.setPlanetsList(res.data.results);

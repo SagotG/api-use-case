@@ -5,6 +5,7 @@ import {
   Space,
   Button,
   Drawer,
+  Input,
   Typography,
   Card,
   Row,
@@ -17,6 +18,7 @@ const { Text } = Typography;
 
 const FilmsList = () => {
   const [data, setData] = useState(null);
+  const [search, setSearch] = useState(null);
   const [loading, setLoading] = useState(true);
   const [filteredInfo, setFilteredInfo] = useState(null);
   const [sortedInfo, setSortedInfo] = useState(null);
@@ -41,6 +43,12 @@ const FilmsList = () => {
   const setDrawer = (values) => {
     setVisible(!visible);
     setSelect(values);
+  };
+
+  const research = async (value) => {
+    setSearch(value);
+    const result = await httpFactory.getFilmsFromId(search);
+    setData(result.listOfFilms);
   };
 
   const columns = [
@@ -74,7 +82,14 @@ const FilmsList = () => {
 
   return (
     <>
-      <Space style={{ marginBottom: 16 }} />
+      <Space style={{ marginBottom: 16 }}>
+        <Input.Search
+          placeholder='search films'
+          enterButton
+          onChange={(e) => research(e.target.value)}
+        />
+      </Space>
+
       <Table
         size='small'
         rowKey={(record) => record.title}

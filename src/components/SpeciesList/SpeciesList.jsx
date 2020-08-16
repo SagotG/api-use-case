@@ -13,6 +13,7 @@ import {
 } from 'antd';
 import httpFactory from '../../services/httpFactory/httpFactory';
 import moment from 'moment';
+import FilmsLink from '../FilmsLink/FilmsLink';
 const { Text } = Typography;
 
 const SpeciesList = () => {
@@ -119,6 +120,11 @@ const SpeciesList = () => {
                   <p>{select.averageLifespan || '-'}</p>
                   <Text strong>Average Lifespan</Text>
                   <p>{select.averageLifespan || '-'}</p>
+                </Card>
+              </Col>
+              <Col className='gutter-row' span={12}>
+                <Card title='Extra information'>
+                  <FilmsLink {...select} />
                 </Card>
               </Col>
               <Col className='gutter-row' span={12}>
