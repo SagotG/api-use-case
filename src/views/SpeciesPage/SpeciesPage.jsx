@@ -1,13 +1,11 @@
 import { Col, Layout, Typography } from 'antd';
 import React from 'react';
+import { SpeciesList } from '../../components';
 
 const SpeciesPage = (props) => (
   <>
-    <Layout>
-      <Col xs={12} md={6}>
-        <Typography.Title>SpeciesPage</Typography.Title>
-      </Col>
-    </Layout>
+    <Typography.Title>SpeciesPage</Typography.Title>
+    <SpeciesList />
   </>
 );
 

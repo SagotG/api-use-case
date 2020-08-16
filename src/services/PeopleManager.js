@@ -7,7 +7,6 @@ export default class PeopleManager {
 
   setPeopleList(list) {
     list.map((elem, i) => {
-      // console.log(JSON.stringify(elem, null, 2));
       let people = new People(
         elem.name,
         elem.birth_year,

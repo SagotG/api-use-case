@@ -1,10 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Space, Button, Drawer, Typography, Card, Row, Col } from 'antd';
+import {
+  Table,
+  Space,
+  Button,
+  Drawer,
+  Typography,
+  Card,
+  Row,
+  Col,
+  Tag,
+} from 'antd';
 import httpFactory from '../../services/httpFactory/httpFactory';
 import moment from 'moment';
 const { Title, Text } = Typography;
 
-const PeopleList = (props) => {
+const FilmsList = (props) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [filteredInfo, setFilteredInfo] = useState(null);
@@ -15,9 +25,11 @@ const PeopleList = (props) => {
   useEffect(() => {
     setLoading(true);
     const fetchData = async () => {
-      const result = await httpFactory.getPeople();
-      setData(result.listOfPeople);
+      const result = await httpFactory.getFilms();
+      setData(result.listOfFilms);
+      console.log(result, null, 2);
     };
+
     fetchData().finally(setLoading(false));
   }, []);
 
@@ -33,16 +45,21 @@ const PeopleList = (props) => {
 
   const columns = [
     {
-      title: 'Name',
-      dataIndex: 'name',
-      key: 'name',
-      onFilter: (value, record) => record.name.indexOf(value) === 0,
-      sorter: (a, b) => a.name.length - b.name.length,
+      title: 'Title',
+      dataIndex: 'title',
+      key: 'title',
+      onFilter: (value, record) => record.title.indexOf(value) === 0,
+      sorter: (a, b) => a.title.length - b.title.length,
       sortDirections: ['descend'],
     },
     {
-      title: 'Birth Year',
-      dataIndex: 'birthYear',
+      title: 'Release date',
+      dataIndex: 'releaseDate',
+      render: (value) => (
+        <Tag color={'geekblue'} key={value}>
+          {moment(value).format('DD / MM / YYYY')}
+        </Tag>
+      ),
     },
     {
       title: 'Details',
@@ -60,7 +77,7 @@ const PeopleList = (props) => {
       <Space style={{ marginBottom: 16 }} />
       <Table
         size='small'
-        rowKey={(record) => record.name}
+        rowKey={(record) => record.title}
         columns={columns}
         loading={loading}
         dataSource={data}
@@ -68,7 +85,7 @@ const PeopleList = (props) => {
         pagination={false}
       />
       <Drawer
-        title={'People'}
+        title={'Film'}
         placement='right'
         onClose={() => setVisible(false)}
         width={'70vw'}
@@ -79,11 +96,11 @@ const PeopleList = (props) => {
               <Col className='gutter-row' span={12}>
                 <Card title='General information'>
                   <Text strong>Name</Text>
-                  <p>{select.name || '-'}</p>
+                  <p>{select.title || '-'}</p>
                   <Text strong>Gender</Text>
                   <p>{select.gender || '-'}</p>
                   <Text strong>Birth year</Text>
-                  <p>{select.birthYear || '-'}</p>
+                  <p>{select.releaseDate || '-'}</p>
                 </Card>
               </Col>
               <Col className='gutter-row' span={12}>
@@ -124,4 +141,4 @@ const PeopleList = (props) => {
   );
 };
 
-export default PeopleList;
+export default FilmsList;

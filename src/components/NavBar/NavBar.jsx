@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Typography } from 'antd';
 
 const { Header } = Layout;
 
@@ -14,7 +14,15 @@ const NavBar = (props) => {
           if (!prop.name) {
             return null;
           }
-
+          if (prop.path === '/home') {
+            return (
+              <Menu.Item key={key}>
+                <Typography.Text strong>
+                  <Link to={prop.path}>{prop.name}</Link>
+                </Typography.Text>
+              </Menu.Item>
+            );
+          }
           return (
             <Menu.Item key={key}>
               <Link to={prop.path}>{prop.name}</Link>

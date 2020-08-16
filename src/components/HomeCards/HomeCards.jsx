@@ -4,6 +4,9 @@ import { Card, Col } from 'antd';
 import { Link } from 'react-router-dom';
 
 const HomeCards = (props) => {
+  if (props.path === '/home') {
+    return null;
+  }
   return (
     <Col xs={24} md={12} lg={8} xl={8}>
       <Link to={props.path}>

@@ -1,10 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Space, Button, Drawer, Typography, Card, Row, Col } from 'antd';
+import {
+  Table,
+  Space,
+  Button,
+  Drawer,
+  Typography,
+  Card,
+  Row,
+  Col,
+  Tag,
+} from 'antd';
 import httpFactory from '../../services/httpFactory/httpFactory';
 import moment from 'moment';
 const { Title, Text } = Typography;
 
-const PeopleList = (props) => {
+const VehiclesList = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [filteredInfo, setFilteredInfo] = useState(null);
@@ -15,9 +25,11 @@ const PeopleList = (props) => {
   useEffect(() => {
     setLoading(true);
     const fetchData = async () => {
-      const result = await httpFactory.getPeople();
-      setData(result.listOfPeople);
+      const result = await httpFactory.getVehicles();
+      setData(result.listOfVehicles);
+      console.log(result.listOfVehicles, null, 2);
     };
+
     fetchData().finally(setLoading(false));
   }, []);
 
@@ -41,8 +53,16 @@ const PeopleList = (props) => {
       sortDirections: ['descend'],
     },
     {
-      title: 'Birth Year',
-      dataIndex: 'birthYear',
+      title: 'Manufacturer',
+      dataIndex: 'manufacturer',
+      onFilter: (value, record) => record.manufacturer.indexOf(value) === 0,
+      sorter: (a, b) => a.manufacturer.length - b.manufacturer.length,
+      sortDirections: ['descend'],
+      render: (value, record) => (
+        <Tag color={'geekblue'} key={value}>
+          {value}
+        </Tag>
+      ),
     },
     {
       title: 'Details',
@@ -68,7 +88,7 @@ const PeopleList = (props) => {
         pagination={false}
       />
       <Drawer
-        title={'People'}
+        name={'Film'}
         placement='right'
         onClose={() => setVisible(false)}
         width={'70vw'}
@@ -77,17 +97,17 @@ const PeopleList = (props) => {
           <>
             <Row gutter={[24, 24]}>
               <Col className='gutter-row' span={12}>
-                <Card title='General information'>
+                <Card name='General information'>
                   <Text strong>Name</Text>
                   <p>{select.name || '-'}</p>
                   <Text strong>Gender</Text>
                   <p>{select.gender || '-'}</p>
                   <Text strong>Birth year</Text>
-                  <p>{select.birthYear || '-'}</p>
+                  <p>{select.releaseDate || '-'}</p>
                 </Card>
               </Col>
               <Col className='gutter-row' span={12}>
-                <Card title='Meta information'>
+                <Card name='Meta information'>
                   <Text strong>Created</Text>
                   <p>
                     {select.created
@@ -103,7 +123,7 @@ const PeopleList = (props) => {
                 </Card>
               </Col>
               <Col className='gutter-row' span={12}>
-                <Card title='Physical information'>
+                <Card name='Physical information'>
                   <Text strong>Eye color</Text>
                   <p>{select.eyeColor || '-'}</p>
                   <Text strong>Hair color</Text>
@@ -124,4 +144,4 @@ const PeopleList = (props) => {
   );
 };
 
-export default PeopleList;
+export default VehiclesList;

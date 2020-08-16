@@ -1,7 +1,7 @@
 import Axios from 'axios';
 
 import PeopleManager from '../PeopleManager';
-import StarshipsManger from '../Starships';
+import StarsphipsManager from '../StarsphipsManager';
 import FilmsManger from '../FilmsManager';
 import VehiclesManger from '../VehiclesManager';
 import SpeciesManger from '../SpeciesManager';
@@ -33,7 +33,7 @@ export default class httpFactory {
   static async getStarships() {
     return Axios.get(`${BASE_URL}/starships`)
       .then((res) => {
-        let starships = new StarshipsManger();
+        let starships = new StarsphipsManager();
         starships.setStarsphipsList(res.data.results);
         return starships;
       })
@@ -43,7 +43,7 @@ export default class httpFactory {
   static async getStarshipsFromId(url) {
     return Axios.get(url)
       .then((res) => {
-        let starships = new StarshipsManger();
+        let starships = new StarsphipsManager();
         starships.setStarsphipsList(res.data.results);
         return starships;
       })
@@ -94,7 +94,7 @@ export default class httpFactory {
     return Axios.get(`${BASE_URL}/species`)
       .then((res) => {
         let species = new SpeciesManger();
-        species.setPeopleList(res.data.results);
+        species.setSpeciesList(res.data.results);
         return species;
       })
       .catch((err) => err);

@@ -28,6 +28,7 @@ export default class StarsphipsManager {
         elem.url
       );
       this.listOfStarsphips.push(starsphips);
+      return this.listOfStarsphips;
     });
   }
 

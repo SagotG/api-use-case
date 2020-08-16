@@ -11,8 +11,8 @@ import {
 const dashRoutes = [
   {
     path: '/home',
-    name: 'Home',
-    hidden: true,
+    name: 'Star Wars API',
+    hidden: false,
     component: HomePage,
   },
   {

@@ -1,4 +1,3 @@
-import ButtonNav from './ButtonNav/ButtonNav';
 import Footer from './Footer/MainFooter';
 import Header from './Header/Header';
 import NavBar from './NavBar/NavBar';
@@ -6,9 +5,13 @@ import Notification from './Notification/Notification';
 import People from './People/People';
 import PeopleList from './PeopleList/PeopleList';
 import Spinner from './Spinner/Spinner';
+import FilmsList from './FilmsList/FilmsList';
+import VehiclesList from './VehiclesList/VehiclesList';
+import StarshipsList from './StarshipsList/StarshipsList';
+import PlanetsList from './PlanetsList/PlanetsList';
+import SpeciesList from './SpeciesList/SpeciesList';
 
 export {
-  ButtonNav,
   Footer,
   Header,
   NavBar,
@@ -16,4 +19,9 @@ export {
   People,
   PeopleList,
   Spinner,
+  FilmsList,
+  VehiclesList,
+  StarshipsList,
+  PlanetsList,
+  SpeciesList,
 };

@@ -1,16 +1,14 @@
-import { Col, Layout, Typography } from 'antd';
+import { Typography } from 'antd';
 import React from 'react';
+import { FilmsList } from '../../components';
 
 const FilmPage = (props) => {
   return (
     <>
-      <Layout>
-        <Col xs={12} md={6}>
-          <Typography.Title>FilmPage</Typography.Title>
-        </Col>
-      </Layout>
+      <Typography.Title>FilmPage</Typography.Title>
+      <FilmsList />
     </>
   );
 };
 
-export default FilmPage;  
+export default FilmPage;
