@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import {
   Table,
@@ -12,7 +13,7 @@ import {
 } from 'antd';
 import httpFactory from '../../services/httpFactory/httpFactory';
 import moment from 'moment';
-const { Title, Text } = Typography;
+const { Text } = Typography;
 
 const VehiclesList = () => {
   const [data, setData] = useState(null);
@@ -27,7 +28,6 @@ const VehiclesList = () => {
     const fetchData = async () => {
       const result = await httpFactory.getVehicles();
       setData(result.listOfVehicles);
-      console.log(result.listOfVehicles, null, 2);
     };
 
     fetchData().finally(setLoading(false));
@@ -88,7 +88,7 @@ const VehiclesList = () => {
         pagination={false}
       />
       <Drawer
-        name={'Film'}
+        title={'Vehicles'}
         placement='right'
         onClose={() => setVisible(false)}
         width={'70vw'}
@@ -100,10 +100,24 @@ const VehiclesList = () => {
                 <Card name='General information'>
                   <Text strong>Name</Text>
                   <p>{select.name || '-'}</p>
-                  <Text strong>Gender</Text>
-                  <p>{select.gender || '-'}</p>
-                  <Text strong>Birth year</Text>
-                  <p>{select.releaseDate || '-'}</p>
+                  <Text strong>Cargo Capacity</Text>
+                  <p>{select.cargoCapacity || '-'}</p>
+                  <Text strong>Model</Text>
+                  <p>{select.model || '-'}</p>
+                  <Text strong>Consumables</Text>
+                  <p>{select.consumables || '-'}</p>
+                  <Text strong>Cost in Credits</Text>
+                  <p>{select.costInCredits || '-'}</p>
+                  <Text strong>Crew</Text>
+                  <p>{select.crew || '-'}</p>
+                  <Text strong>Length</Text>
+                  <p>{select.length || '-'}</p>
+                  <Text strong>Manufacturer</Text>
+                  <p>{select.manufacturer || '-'}</p>
+                  <Text strong>Max atmosphering speed</Text>
+                  <p>{select.maxAtmospheringSpeed || '-'}</p>
+                  <Text strong>passengers</Text>
+                  <p>{select.passengers || '-'}</p>
                 </Card>
               </Col>
               <Col className='gutter-row' span={12}>
@@ -111,29 +125,15 @@ const VehiclesList = () => {
                   <Text strong>Created</Text>
                   <p>
                     {select.created
-                      ? moment(select.created).format('MM/DD/YYYY')
+                      ? moment(select.created).format('DD/MM/YYYY')
                       : '-'}
                   </p>
                   <Text strong>Edited</Text>
                   <p>
                     {select.edited
-                      ? moment(select.edited).format('MM/DD/YYYY')
+                      ? moment(select.edited).format('DD/MM/YYYY')
                       : '-'}
                   </p>
-                </Card>
-              </Col>
-              <Col className='gutter-row' span={12}>
-                <Card name='Physical information'>
-                  <Text strong>Eye color</Text>
-                  <p>{select.eyeColor || '-'}</p>
-                  <Text strong>Hair color</Text>
-                  <p>{select.hairColor || '-'}</p>
-                  <Text strong>Height</Text>
-                  <p>{select.height || '-'}</p>
-                  <Text strong>Mass</Text>
-                  <p>{select.mass || '-'}</p>
-                  <Text strong>Skin color</Text>
-                  <p>{select.skinColor || '-'}</p>
                 </Card>
               </Col>
             </Row>

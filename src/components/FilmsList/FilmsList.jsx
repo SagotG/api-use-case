@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import {
   Table,
@@ -12,9 +13,9 @@ import {
 } from 'antd';
 import httpFactory from '../../services/httpFactory/httpFactory';
 import moment from 'moment';
-const { Title, Text } = Typography;
+const { Text } = Typography;
 
-const FilmsList = (props) => {
+const FilmsList = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [filteredInfo, setFilteredInfo] = useState(null);
@@ -27,7 +28,6 @@ const FilmsList = (props) => {
     const fetchData = async () => {
       const result = await httpFactory.getFilms();
       setData(result.listOfFilms);
-      console.log(result, null, 2);
     };
 
     fetchData().finally(setLoading(false));
@@ -97,10 +97,14 @@ const FilmsList = (props) => {
                 <Card title='General information'>
                   <Text strong>Name</Text>
                   <p>{select.title || '-'}</p>
-                  <Text strong>Gender</Text>
-                  <p>{select.gender || '-'}</p>
-                  <Text strong>Birth year</Text>
-                  <p>{select.releaseDate || '-'}</p>
+                  <Text strong>Episode number</Text>
+                  <p>{select.episode_id || '-'}</p>
+                  <Text strong>Release Date</Text>
+                  <p>
+                    {select.releaseDate !== null
+                      ? moment(select.releaseDate).format('DD/MM/YYYY')
+                      : '-'}
+                  </p>
                 </Card>
               </Col>
               <Col className='gutter-row' span={12}>
@@ -108,29 +112,25 @@ const FilmsList = (props) => {
                   <Text strong>Created</Text>
                   <p>
                     {select.created
-                      ? moment(select.created).format('MM/DD/YYYY')
+                      ? moment(select.created).format('DD/MM/YYYY')
                       : '-'}
                   </p>
                   <Text strong>Edited</Text>
                   <p>
                     {select.edited
-                      ? moment(select.edited).format('MM/DD/YYYY')
+                      ? moment(select.edited).format('DD/MM/YYYY')
                       : '-'}
                   </p>
                 </Card>
               </Col>
               <Col className='gutter-row' span={12}>
-                <Card title='Physical information'>
-                  <Text strong>Eye color</Text>
-                  <p>{select.eyeColor || '-'}</p>
-                  <Text strong>Hair color</Text>
-                  <p>{select.hairColor || '-'}</p>
-                  <Text strong>Height</Text>
-                  <p>{select.height || '-'}</p>
-                  <Text strong>Mass</Text>
-                  <p>{select.mass || '-'}</p>
-                  <Text strong>Skin color</Text>
-                  <p>{select.skinColor || '-'}</p>
+                <Card title='Technical information'>
+                  <Text strong>Director</Text>
+                  <p>{select.director || '-'}</p>
+                  <Text strong>Producer</Text>
+                  <p>{select.producer || '-'}</p>
+                  <Text strong>Opening Crawl</Text>
+                  <p>{select.openingCrawl || '-'}</p>
                 </Card>
               </Col>
             </Row>

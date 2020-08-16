@@ -2,9 +2,9 @@ import { Typography } from 'antd';
 import React from 'react';
 import { PlanetsList } from '../../components';
 
-const PlanetsPage = (props) => (
+const PlanetsPage = () => (
   <>
-    <Typography.Title>PlanetsPage</Typography.Title>
+    <Typography.Title>Planets</Typography.Title>
     <PlanetsList />
   </>
 );

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import {
   Table,
@@ -12,7 +13,8 @@ import {
 } from 'antd';
 import httpFactory from '../../services/httpFactory/httpFactory';
 import moment from 'moment';
-const { Title, Text } = Typography;
+
+const { Text } = Typography;
 
 const PlanetsList = () => {
   const [data, setData] = useState(null);
@@ -27,7 +29,6 @@ const PlanetsList = () => {
     const fetchData = async () => {
       const result = await httpFactory.getPlanets();
       setData(result.listOfPlanets);
-      console.log(result.listOfPlanets, null, 2);
     };
 
     fetchData().finally(setLoading(false));
@@ -88,7 +89,7 @@ const PlanetsList = () => {
         pagination={false}
       />
       <Drawer
-        name={'Film'}
+        title={'Planets'}
         placement='right'
         onClose={() => setVisible(false)}
         width={'70vw'}
@@ -97,13 +98,21 @@ const PlanetsList = () => {
           <>
             <Row gutter={[24, 24]}>
               <Col className='gutter-row' span={12}>
-                <Card name='General information'>
+                <Card title='General information'>
                   <Text strong>Name</Text>
                   <p>{select.name || '-'}</p>
-                  <Text strong>Gender</Text>
-                  <p>{select.gender || '-'}</p>
-                  <Text strong>Birth year</Text>
-                  <p>{select.releaseDate || '-'}</p>
+                  <Text strong>Orbital Period</Text>
+                  <p>{select.orbitalPeriod || '-'}</p>
+                  <Text strong>Rotation Period</Text>
+                  <p>{select.rotationPeriod || '-'}</p>
+                  <Text strong>Gravity</Text>
+                  <p>{select.gravity || '-'}</p>
+                  <Text strong>Diameter</Text>
+                  <p>{select.diameter || '-'}</p>
+                  <Text strong>Climate</Text>
+                  <p>{select.climate}</p>
+                  <Text strong>Surface Water</Text>
+                  <p>{select.surfaceWater === 1 ? 'yes' : 'no' || '-'}</p>
                 </Card>
               </Col>
               <Col className='gutter-row' span={12}>
@@ -111,29 +120,23 @@ const PlanetsList = () => {
                   <Text strong>Created</Text>
                   <p>
                     {select.created
-                      ? moment(select.created).format('MM/DD/YYYY')
+                      ? moment(select.created).format('DD/MM/YYYY')
                       : '-'}
                   </p>
                   <Text strong>Edited</Text>
                   <p>
                     {select.edited
-                      ? moment(select.edited).format('MM/DD/YYYY')
+                      ? moment(select.edited).format('DD/MM/YYYY')
                       : '-'}
                   </p>
                 </Card>
               </Col>
               <Col className='gutter-row' span={12}>
-                <Card name='Physical information'>
-                  <Text strong>Eye color</Text>
-                  <p>{select.eyeColor || '-'}</p>
-                  <Text strong>Hair color</Text>
-                  <p>{select.hairColor || '-'}</p>
-                  <Text strong>Height</Text>
-                  <p>{select.height || '-'}</p>
-                  <Text strong>Mass</Text>
-                  <p>{select.mass || '-'}</p>
-                  <Text strong>Skin color</Text>
-                  <p>{select.skinColor || '-'}</p>
+                <Card name='Population information'>
+                  <Text strong>Population</Text>
+                  <p>{select.population || '-'}</p>
+                  <Text strong>Resident</Text>
+                  <p>{select.resident || '-'}</p>
                 </Card>
               </Col>
             </Row>

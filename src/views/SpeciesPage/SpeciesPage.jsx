@@ -1,10 +1,10 @@
-import { Col, Layout, Typography } from 'antd';
 import React from 'react';
+import { Typography } from 'antd';
 import { SpeciesList } from '../../components';
 
-const SpeciesPage = (props) => (
+const SpeciesPage = () => (
   <>
-    <Typography.Title>SpeciesPage</Typography.Title>
+    <Typography.Title>Species</Typography.Title>
     <SpeciesList />
   </>
 );

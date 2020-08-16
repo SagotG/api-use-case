@@ -1,8 +1,9 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { Table, Space, Button, Drawer, Typography, Card, Row, Col } from 'antd';
 import httpFactory from '../../services/httpFactory/httpFactory';
 import moment from 'moment';
-const { Title, Text } = Typography;
+const { Text } = Typography;
 
 const PeopleList = (props) => {
   const [data, setData] = useState(null);
@@ -91,13 +92,13 @@ const PeopleList = (props) => {
                   <Text strong>Created</Text>
                   <p>
                     {select.created
-                      ? moment(select.created).format('MM/DD/YYYY')
+                      ? moment(select.created).format('DD/MM/YYYY')
                       : '-'}
                   </p>
                   <Text strong>Edited</Text>
                   <p>
                     {select.edited
-                      ? moment(select.edited).format('MM/DD/YYYY')
+                      ? moment(select.edited).format('DD/MM/YYYY')
                       : '-'}
                   </p>
                 </Card>

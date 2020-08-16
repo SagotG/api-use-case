@@ -5,7 +5,7 @@ import { PeopleList } from '../../components';
 const PeoplePage = (props) => {
   return (
     <>
-      <Typography.Title>Star Wars Characters</Typography.Title>
+      <Typography.Title>Characters</Typography.Title>
       <PeopleList />
     </>
   );

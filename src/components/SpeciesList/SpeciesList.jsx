@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import {
   Table,
@@ -12,7 +13,7 @@ import {
 } from 'antd';
 import httpFactory from '../../services/httpFactory/httpFactory';
 import moment from 'moment';
-const { Title, Text } = Typography;
+const { Text } = Typography;
 
 const SpeciesList = () => {
   const [data, setData] = useState(null);
@@ -26,8 +27,8 @@ const SpeciesList = () => {
     setLoading(true);
     const fetchData = async () => {
       const result = await httpFactory.getSpecies();
-      setData(result.listOfSpecies);
       console.log(result);
+      setData(result.listOfSpecies);
     };
 
     fetchData().finally(setLoading(false));
@@ -88,7 +89,7 @@ const SpeciesList = () => {
         pagination={false}
       />
       <Drawer
-        name={'Film'}
+        title={'Species'}
         placement='right'
         onClose={() => setVisible(false)}
         width={'70vw'}
@@ -100,32 +101,10 @@ const SpeciesList = () => {
                 <Card name='General information'>
                   <Text strong>Name</Text>
                   <p>{select.name || '-'}</p>
-                  <Text strong>Gender</Text>
-                  <p>{select.gender || '-'}</p>
-                  <Text strong>Birth year</Text>
-                  <p>{select.releaseDate || '-'}</p>
-                </Card>
-              </Col>
-              <Col className='gutter-row' span={12}>
-                <Card name='Meta information'>
-                  <Text strong>Created</Text>
-                  <p>
-                    {select.created
-                      ? moment(select.created).format('MM/DD/YYYY')
-                      : '-'}
-                  </p>
-                  <Text strong>Edited</Text>
-                  <p>
-                    {select.edited
-                      ? moment(select.edited).format('MM/DD/YYYY')
-                      : '-'}
-                  </p>
-                </Card>
-              </Col>
-              <Col className='gutter-row' span={12}>
-                <Card name='Physical information'>
                   <Text strong>Eye color</Text>
                   <p>{select.eyeColor || '-'}</p>
+                  <Text strong>Skin Colors</Text>
+                  <p>{select.skinColors || '-'}</p>
                   <Text strong>Hair color</Text>
                   <p>{select.hairColor || '-'}</p>
                   <Text strong>Height</Text>
@@ -134,6 +113,28 @@ const SpeciesList = () => {
                   <p>{select.mass || '-'}</p>
                   <Text strong>Skin color</Text>
                   <p>{select.skinColor || '-'}</p>
+                  <Text strong>Average Height</Text>
+                  <p>{select.averageHeight || '-'}</p>
+                  <Text strong>Average Lifespan</Text>
+                  <p>{select.averageLifespan || '-'}</p>
+                  <Text strong>Average Lifespan</Text>
+                  <p>{select.averageLifespan || '-'}</p>
+                </Card>
+              </Col>
+              <Col className='gutter-row' span={12}>
+                <Card name='Meta information'>
+                  <Text strong>Created</Text>
+                  <p>
+                    {select.created
+                      ? moment(select.created).format('DD/MM/YYYY')
+                      : '-'}
+                  </p>
+                  <Text strong>Edited</Text>
+                  <p>
+                    {select.edited
+                      ? moment(select.edited).format('DD/MM/YYYY')
+                      : '-'}
+                  </p>
                 </Card>
               </Col>
             </Row>

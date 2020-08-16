@@ -2,10 +2,10 @@ import { Typography } from 'antd';
 import React from 'react';
 import { VehiclesList } from '../../components';
 
-const VehiclesPage = (props) => {
+const VehiclesPage = () => {
   return (
     <>
-      <Typography.Title>VehiclesPage</Typography.Title>
+      <Typography.Title>Vehicles</Typography.Title>
       <VehiclesList />
     </>
   );
