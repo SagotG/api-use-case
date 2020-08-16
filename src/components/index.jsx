@@ -11,13 +11,13 @@ import PlanetsList from './PlanetsList/PlanetsList';
 import SpeciesList from './SpeciesList/SpeciesList';
 import FilmsLink from './FilmsLink/FilmsLink';
 import ShipsLink from './ShipsLink/ShipsLink';
-import RacesLink from './RacesLink/RacesLink';
+import HomeworldLink from './HomeworldLink/HomeworldLink';
 
 export {
   Footer,
   FilmsLink,
   ShipsLink,
-  RacesLink,
+  HomeworldLink,
   Header,
   NavBar,
   Notification,

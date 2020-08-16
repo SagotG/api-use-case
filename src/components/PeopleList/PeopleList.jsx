@@ -14,7 +14,7 @@ import {
 } from 'antd';
 import httpFactory from '../../services/httpFactory/httpFactory';
 import moment from 'moment';
-import { FilmsLink, ShipsLink, RacesLink } from '../index';
+import { FilmsLink, ShipsLink, HomeworldLink } from '../index';
 
 const { Text } = Typography;
 
@@ -133,7 +133,7 @@ const PeopleList = () => {
                 <Card title='Extra information'>
                   <FilmsLink {...select} />
                   <ShipsLink {...select} />
-                  <RacesLink {...select} />
+                  <HomeworldLink {...select} />
                 </Card>
               </Col>
               <Col className='gutter-row' span={12}>

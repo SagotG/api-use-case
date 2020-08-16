@@ -3,7 +3,7 @@ import Axios from 'axios';
 import { Typography } from 'antd';
 
 const FilmsLink = (props) => {
-  const [url, setUrl] = useState(props.characters);
+  const [url, setUrl] = useState(props.films);
   const [data, setData] = useState(null);
   useEffect(() => {
     setUrl(props.films);
@@ -17,11 +17,10 @@ const FilmsLink = (props) => {
         }
       });
       setTimeout(() => {
-        console.log(films);
         setData(films);
       }, 500);
     }
-  }, [props, props.characters]);
+  }, [props, props.films]);
 
   return (
     <>

@@ -15,9 +15,9 @@ const CharactersLink = (props) => {
             films.push(res.data.title);
           });
         }
+        return item;
       });
       setTimeout(() => {
-        console.log(films);
         setData(films);
       }, 500);
     }

@@ -15,9 +15,9 @@ const ShipsLink = (props) => {
             ships.push(res.data.name);
           });
         }
+        return item;
       });
       setTimeout(() => {
-        console.log(ships);
         setData(ships);
       }, 500);
     }
